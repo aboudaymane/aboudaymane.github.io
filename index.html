@@ -7,10 +7,6 @@
   <title>Aymane Aboud — Portfolio</title>
 
   <style>
-    /* =========================
-       BASIC SETTINGS
-    ========================== */
-
     * {
       margin: 0;
       padding: 0;
@@ -36,7 +32,7 @@
 
     /* =========================
        NAVIGATION
-    ========================== */
+    ========================= */
 
     nav {
       position: fixed;
@@ -52,29 +48,33 @@
 
       z-index: 100;
 
-      background: linear-gradient(
-        rgba(11,11,11,0.9),
-        rgba(11,11,11,0)
-      );
+      background:
+        linear-gradient(
+          rgba(11,11,11,0.92),
+          rgba(11,11,11,0)
+        );
     }
 
     .logo {
       font-size: 13px;
       font-weight: bold;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      opacity: 0.75;
-      transition: opacity 0.3s;
+      letter-spacing: .11em;
+      opacity: .75;
+      transition: opacity .3s;
     }
 
     .nav-links a:hover {
@@ -84,7 +84,7 @@
 
     /* =========================
        HERO
-    ========================== */
+    ========================= */
 
     .hero {
       min-height: 100vh;
@@ -92,7 +92,7 @@
       display: flex;
       align-items: flex-end;
 
-      padding: 0 5vw 9vh;
+      padding: 0 5vw 10vh;
 
       position: relative;
       overflow: hidden;
@@ -117,7 +117,7 @@
 
     .eyebrow {
       font-size: 11px;
-      letter-spacing: 0.2em;
+      letter-spacing: .2em;
       text-transform: uppercase;
       color: #aaa69f;
       margin-bottom: 25px;
@@ -125,8 +125,8 @@
 
     .hero h1 {
       font-size: clamp(60px, 12vw, 150px);
-      line-height: 0.85;
-      letter-spacing: -0.065em;
+      line-height: .85;
+      letter-spacing: -.065em;
       font-weight: 700;
     }
 
@@ -142,14 +142,14 @@
 
 
     /* =========================
-       GENERAL SECTIONS
-    ========================== */
+       PORTFOLIO PREVIEWS
+    ========================= */
 
-    section {
+    .portfolio {
       padding: 120px 5vw;
     }
 
-    .section-header {
+    .portfolio-intro {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -157,61 +157,63 @@
       border-bottom: 1px solid #292826;
 
       padding-bottom: 18px;
-      margin-bottom: 35px;
+      margin-bottom: 45px;
     }
 
-    .section-title {
+    .portfolio-label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: .18em;
     }
 
-    .section-number {
+    .portfolio-number {
       color: #77736d;
       font-size: 11px;
     }
 
-
-    /* =========================
-       PORTFOLIO GRID
-    ========================== */
-
     .portfolio-grid {
       display: grid;
+
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+
+      gap: 20px;
     }
 
-    .project {
+    .portfolio-card {
       position: relative;
 
-      height: 450px;
+      min-height: 470px;
 
       overflow: hidden;
 
-      background: #191817;
-
       border: 1px solid #252422;
+
+      display: flex;
+      align-items: flex-end;
+
+      transition:
+        border-color .3s,
+        transform .3s;
     }
 
-    /*
-      These are temporary artwork placeholders.
-      Later we will replace them with your images.
-    */
+    .portfolio-card:hover {
+      border-color: #55514b;
+      transform: translateY(-3px);
+    }
 
     .artwork {
       position: absolute;
       inset: 0;
 
-      transition: transform 0.7s ease;
+      transition: transform .7s ease;
     }
 
-    .project:hover .artwork {
+    .portfolio-card:hover .artwork {
       transform: scale(1.04);
     }
 
 
-    /* Temporary placeholder backgrounds */
+    /* PLACEHOLDER BACKGROUNDS */
 
     .animation {
       background:
@@ -227,20 +229,6 @@
         );
     }
 
-    .characters {
-      background:
-        radial-gradient(
-          circle at 30% 70%,
-          #8c8477 0%,
-          transparent 24%
-        ),
-        linear-gradient(
-          145deg,
-          #181a1b,
-          #36312b
-        );
-    }
-
     .storyboard {
       background:
         radial-gradient(
@@ -250,7 +238,7 @@
         ),
         linear-gradient(
           120deg,
-          #222222,
+          #222,
           #090909
         );
     }
@@ -269,39 +257,76 @@
         );
     }
 
+    .sketches {
+      background:
+        radial-gradient(
+          circle at 30% 70%,
+          #8c8477 0%,
+          transparent 24%
+        ),
+        linear-gradient(
+          145deg,
+          #181a1b,
+          #36312b
+        );
+    }
 
-    /* Project information */
 
-    .project-info {
-      position: absolute;
+    /* LARGE TITLES */
 
-      left: 25px;
-      bottom: 23px;
-
+    .card-info {
+      position: relative;
       z-index: 2;
+
+      padding: 30px;
     }
 
-    .project-title {
-      font-size: 23px;
-      margin-bottom: 5px;
+    .card-title {
+      font-size: clamp(42px, 5.5vw, 75px);
+
+      line-height: .92;
+
+      letter-spacing: -.05em;
+
+      font-weight: 600;
+
+      margin-bottom: 14px;
     }
 
-    .project-category {
+    .card-category {
       font-size: 10px;
 
       color: #c0bcb5;
 
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+
+      letter-spacing: .13em;
     }
 
 
     /* =========================
-       ABOUT
-    ========================== */
+       ABOUT + CONTACT
+    ========================= */
 
-    .about-content {
-      max-width: 850px;
+    .about-contact {
+      padding: 120px 5vw 0;
+    }
+
+    .about {
+      max-width: 900px;
+
+      padding-bottom: 140px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+
+      border-bottom: 1px solid #292826;
+
+      padding-bottom: 18px;
+      margin-bottom: 40px;
     }
 
     .about-text {
@@ -309,19 +334,21 @@
 
       line-height: 1.08;
 
-      letter-spacing: -0.035em;
+      letter-spacing: -.035em;
     }
 
 
-    /* =========================
-       CONTACT
-    ========================== */
+    /* CONTACT */
 
     .contact {
       border-top: 1px solid #292826;
 
+      padding: 100px 0 120px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: flex-end;
 
       gap: 40px;
@@ -330,9 +357,9 @@
     .contact h2 {
       font-size: clamp(50px, 8vw, 110px);
 
-      line-height: 0.9;
+      line-height: .9;
 
-      letter-spacing: -0.05em;
+      letter-spacing: -.05em;
     }
 
     .email {
@@ -346,38 +373,43 @@
 
     /* =========================
        FOOTER
-    ========================== */
+    ========================= */
 
     footer {
       padding: 25px 5vw;
 
       display: flex;
+
       justify-content: space-between;
 
       color: #66625c;
 
       font-size: 10px;
+
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+
+      letter-spacing: .08em;
     }
 
 
     /* =========================
        MOBILE
-    ========================== */
+    ========================= */
 
-    @media (max-width: 700px) {
+    @media(max-width: 700px) {
 
       nav {
         padding: 18px 5vw;
+        align-items: flex-start;
       }
 
       .nav-links {
-        gap: 12px;
+        gap: 10px;
+        max-width: 240px;
       }
 
       .nav-links a {
-        font-size: 9px;
+        font-size: 8px;
       }
 
       .hero {
@@ -388,7 +420,7 @@
         font-size: 16px;
       }
 
-      section {
+      .portfolio {
         padding: 85px 5vw;
       }
 
@@ -396,12 +428,29 @@
         grid-template-columns: 1fr;
       }
 
-      .project {
-        height: 360px;
+      .portfolio-card {
+        min-height: 360px;
+      }
+
+      .card-info {
+        padding: 22px;
+      }
+
+      .card-title {
+        font-size: 43px;
+      }
+
+      .about-contact {
+        padding: 85px 5vw 0;
+      }
+
+      .about {
+        padding-bottom: 90px;
       }
 
       .contact {
         display: block;
+        padding: 80px 0 90px;
       }
 
       .email {
@@ -428,7 +477,7 @@
 
   <!-- =========================
        NAVIGATION
-  ========================== -->
+  ========================= -->
 
   <nav>
 
@@ -438,8 +487,20 @@
 
     <div class="nav-links">
 
-      <a href="#work">
-        Work
+      <a href="animation.html">
+        Animation
+      </a>
+
+      <a href="storyboard.html">
+        Storyboard
+      </a>
+
+      <a href="illustration.html">
+        Illustration
+      </a>
+
+      <a href="sketches.html">
+        Sketches
       </a>
 
       <a href="#about">
@@ -455,10 +516,9 @@
   </nav>
 
 
-
   <!-- =========================
        HERO
-  ========================== -->
+  ========================= -->
 
   <section class="hero">
 
@@ -476,8 +536,7 @@
 
       <p class="hero-description">
         A visual portfolio exploring illustration,
-        animation, character design, storyboarding
-        and visual development.
+        animation, storyboarding and visual development.
       </p>
 
     </div>
@@ -485,20 +544,19 @@
   </section>
 
 
-
   <!-- =========================
-       WORK
-  ========================== -->
+       PORTFOLIO
+  ========================= -->
 
-  <section id="work">
+  <section class="portfolio">
 
-    <div class="section-header">
+    <div class="portfolio-intro">
 
-      <div class="section-title">
+      <div class="portfolio-label">
         Selected Work
       </div>
 
-      <div class="section-number">
+      <div class="portfolio-number">
         01 — 04
       </div>
 
@@ -508,19 +566,19 @@
     <div class="portfolio-grid">
 
 
-      <!-- PROJECT 1 -->
+      <!-- ANIMATION -->
 
-      <a href="#" class="project">
+      <a href="animation.html" class="portfolio-card">
 
         <div class="artwork animation"></div>
 
-        <div class="project-info">
+        <div class="card-info">
 
-          <div class="project-title">
+          <div class="card-title">
             Animation
           </div>
 
-          <div class="project-category">
+          <div class="card-category">
             2D · Motion · Film
           </div>
 
@@ -529,42 +587,19 @@
       </a>
 
 
+      <!-- STORYBOARD -->
 
-      <!-- PROJECT 2 -->
-
-      <a href="#" class="project">
-
-        <div class="artwork characters"></div>
-
-        <div class="project-info">
-
-          <div class="project-title">
-            Character Design
-          </div>
-
-          <div class="project-category">
-            Development · Illustration
-          </div>
-
-        </div>
-
-      </a>
-
-
-
-      <!-- PROJECT 3 -->
-
-      <a href="#" class="project">
+      <a href="storyboard.html" class="portfolio-card">
 
         <div class="artwork storyboard"></div>
 
-        <div class="project-info">
+        <div class="card-info">
 
-          <div class="project-title">
+          <div class="card-title">
             Storyboard
           </div>
 
-          <div class="project-category">
+          <div class="card-category">
             Sequences · Visual Narrative
           </div>
 
@@ -573,21 +608,42 @@
       </a>
 
 
+      <!-- ILLUSTRATION -->
 
-      <!-- PROJECT 4 -->
-
-      <a href="#" class="project">
+      <a href="illustration.html" class="portfolio-card">
 
         <div class="artwork illustration"></div>
 
-        <div class="project-info">
+        <div class="card-info">
 
-          <div class="project-title">
+          <div class="card-title">
             Illustration
           </div>
 
-          <div class="project-category">
+          <div class="card-category">
             Editorial · Books · Personal
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- SKETCHES -->
+
+      <a href="sketches.html" class="portfolio-card">
+
+        <div class="artwork sketches"></div>
+
+        <div class="card-info">
+
+          <div class="card-title">
+            Sketches /<br>
+            Art Exploration
+          </div>
+
+          <div class="card-category">
+            Studies · Experiments · Personal Work
           </div>
 
         </div>
@@ -600,79 +656,64 @@
   </section>
 
 
-
   <!-- =========================
-       ABOUT
-  ========================== -->
+       ABOUT + CONTACT
+  ========================= -->
 
-  <section id="about">
+  <section class="about-contact">
 
-    <div class="section-header">
 
-      <div class="section-title">
+    <!-- ABOUT -->
+
+    <div class="about" id="about">
+
+      <div class="section-label">
         About
       </div>
 
-      <div class="section-number">
-        02
-      </div>
-
-    </div>
-
-
-    <div class="about-content">
-
       <p class="about-text">
-
-        I work across drawing, animation
-        and cinema, developing images
-        from the first sketch to the
-        final frame.
-
+        I work across drawing, animation and cinema,
+        developing images from the first sketch to
+        the final frame.
       </p>
 
     </div>
 
-  </section>
 
+    <!-- CONTACT -->
 
+    <div class="contact" id="contact">
 
-  <!-- =========================
-       CONTACT
-  ========================== -->
+      <div>
 
-  <section id="contact" class="contact">
+        <div class="eyebrow">
+          Contact
+        </div>
 
-    <div>
+        <h2>
+          Let's make<br>
+          something.
+        </h2>
 
-      <div class="eyebrow">
-        03 — Contact
       </div>
 
-      <h2>
-        Let's make<br>
-        something.
-      </h2>
+
+      <a
+        class="email"
+        href="mailto:YOUR_EMAIL@example.com"
+      >
+        YOUR_EMAIL@example.com
+      </a>
 
     </div>
 
 
-    <!-- Replace this email -->
-
-    <a
-      class="email"
-      href="mailto:YOUR_EMAIL@example.com"
-    >
-      YOUR_EMAIL@example.com
-    </a>
-
   </section>
-
 
 
   <!-- =========================
        FOOTER
-  ========================== -->
+  ========================= -->
 
   <footer>
 
